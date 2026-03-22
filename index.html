@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaliveed 2026</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Trebuchet MS", "Comic Sans MS", sans-serif;
+      background: #fffdf7;
+    }
+
+    .hero {
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 8%;
+      background: linear-gradient(135deg, #fff4b3, #b8ecff, #ffd6a5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.25;
+      z-index: 0;
+    }
+
+    .hero::before {
+      width: 300px;
+      height: 300px;
+      background: #ff6b6b;
+      top: -80px;
+      left: -80px;
+    }
+
+    .hero::after {
+      width: 380px;
+      height: 380px;
+      background: #4ecdc4;
+      bottom: -120px;
+      right: -100px;
+    }
+
+    .hero-text,
+    .hero-image {
+      position: relative;
+      z-index: 1;
+      width: 48%;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      color: #ff4f81;
+      line-height: 1.1;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 0 #fff;
+    }
+
+    .hero-text h2 {
+      font-size: 1.5rem;
+      color: #2d6a8d;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #444;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      max-width: 540px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #ff7b54;
+      color: white;
+      box-shadow: 0 6px 16px rgba(255, 123, 84, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background: #ff5e2b;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #2d6a8d;
+      border: 2px solid #2d6a8d;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: #e9f7ff;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image .card {
+      width: 100%;
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 30px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-image .card img {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 20px;
+    }
+
+    .hero-image .card p {
+      margin-top: 15px;
+      color: #444;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 40px;
+      }
+
+      .hero-text,
+      .hero-image {
+        width: 100%;
+      }
+
+      .hero-text {
+        margin-bottom: 40px;
+      }
+
+      .hero-text h1 {
+        font-size: 3rem;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+    }
+
+    .camp-highlights {
+  position: relative;
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 20px;
+  min-height: 620px;
+}
+
+/* Right large box */
+.gallery-box {
+  margin-left: 180px;
+  background: linear-gradient(135deg, #dff6ff, #ffffff);
+  border-radius: 32px;
+  padding: 35px 30px 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-box h3 {
+  font-size: 2rem;
+  color: #1f5f8b;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Left overlapping box */
+.description-box {
+  position: absolute;
+  top: 80px;
+  left: -140px; /* shifted slightly right */
+  width: 360px;
+
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 28px;
+  padding: 30px 28px;
+
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+
+  z-index: 3;
+}
+
+.description-box h2 {
+  font-size: 2rem;
+  color: #ff4f81;
+  margin-bottom: 18px;
+}
+
+.description-box p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 14px;
+}
+
+/* Gallery layout */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+.photo-caption {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #333;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 14px;
+  max-width: 75%;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 950px) {
+  .camp-highlights {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .gallery-box {
+    margin-left: 0;
+    order: 2;
+  }
+
+  .description-box {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    order: 1;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item img {
+    height: 220px;
+  }
+}
+
+.schedule-section {
+  position: relative;
+  max-width: 1250px;
+  margin: 90px auto;
+  padding: 90px 24px 40px;
+  overflow: hidden;
+}
+
+.schedule-bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.shape-one {
+  width: 260px;
+  height: 260px;
+  top: 30px;
+  left: -70px;
+  background: radial-gradient(circle, #ffd54f, #ff8a65);
+}
+
+.shape-two {
+  width: 300px;
+  height: 300px;
+  right: -90px;
+  bottom: 20px;
+  background: radial-gradient(circle, #81d4fa, #ba68c8);
+}
+
+.schedule-header {
+  text-align: center;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 2;
+}
+
+.schedule-tag {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.65);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #ff4f81;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.schedule-header h2 {
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  color: #1f3b73;
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+
+.schedule-header p {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+.schedule-table-wrap {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(255,255,255,0.55);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.55);
+  border-radius: 34px;
+  overflow: hidden;
+}
+
+.schedule-table-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 95px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.42),
+    rgba(255,255,255,0.06)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  position: relative;
+  z-index: 2;
+}
+
+.schedule-table thead th {
+  padding: 24px 24px;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #173b6c;
+  background: linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1));
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+}
+
+.schedule-table tbody tr {
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.schedule-table tbody tr:nth-child(odd) {
+  background: rgba(255,255,255,0.10);
+}
+
+.schedule-table tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.18);
+}
+
+.schedule-table tbody tr:hover {
+  background: rgba(255,255,255,0.34);
+  transform: scale(1.006);
+}
+
+.schedule-table td {
+  padding: 20px 24px;
+  font-size: 1rem;
+  color: #374151;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  vertical-align: middle;
+}
+
+.schedule-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.date-pill {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.75);
+  color: #174c7d;
+  font-weight: 800;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  white-space: nowrap;
+}
+
+.program-badge {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 14px;
+  color: #243b53;
+  font-weight: 800;
+  font-size: 0.94rem;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.55);
+}
+
+.fun     { background: linear-gradient(135deg, #fff59d, #ffcc80); }
+.craft   { background: linear-gradient(135deg, #ffd1dc, #ffe29a); }
+.dance   { background: linear-gradient(135deg, #f8bbd0, #ce93d8); }
+.story   { background: linear-gradient(135deg, #b3e5fc, #81d4fa); }
+.happy   { background: linear-gradient(135deg, #c8e6c9, #fff59d); }
+.cooking { background: linear-gradient(135deg, #ffccbc, #ffe082); }
+.yoga    { background: linear-gradient(135deg, #b2dfdb, #c5e1a5); }
+.music   { background: linear-gradient(135deg, #d1c4e9, #b39ddb); }
+.sport   { background: linear-gradient(135deg, #a5d6a7, #80deea); }
+.math    { background: linear-gradient(135deg, #ffe082, #b39ddb); }
+.drama   { background: linear-gradient(135deg, #ffab91, #f48fb1); }
+.magic   { background: linear-gradient(135deg, #9fa8da, #80cbc4); }
+.final   { background: linear-gradient(135deg, #ffd54f, #ff8a65); color: #5d2500; }
+
+.final-day-row td {
+  background: rgba(255, 236, 179, 0.26);
+  font-weight: 700;
+}
+
+.final-pill {
+  background: linear-gradient(135deg, #fff176, #ffb74d);
+  color: #6d3b00;
+}
+
+@media (max-width: 900px) {
+  .schedule-section {
+    padding-top: 70px;
+  }
+
+  .schedule-table-wrap {
+    overflow-x: auto;
+    border-radius: 24px;
+  }
+
+  .schedule-table {
+    min-width: 760px;
+  }
+
+  .schedule-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .schedule-header p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .schedule-section {
+    margin: 70px auto;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .schedule-tag {
+    font-size: 0.78rem;
+  }
+}
+
+.registration-section {
+  max-width: 1100px;
+  margin: 100px auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* Header */
+
+.registration-header {
+  margin-bottom: 40px;
+}
+
+.reg-tag {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.6);
+  font-weight: bold;
+  color: #ff4f81;
+  margin-bottom: 15px;
+}
+
+.registration-header h2 {
+  font-size: 2.8rem;
+  color: #1f3b73;
+  margin-bottom: 10px;
+}
+
+.registration-header p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Glass Card */
+
+.registration-card {
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(18px);
+  border-radius: 30px;
+  padding: 30px;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.1);
+}
+
+/* Table */
+
+.registration-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+}
+
+.registration-table th {
+  padding: 18px;
+  font-size: 1rem;
+  color: #173b6c;
+  background: rgba(255,255,255,0.3);
+}
+
+.registration-table td {
+  padding: 16px;
+  font-size: 1rem;
+  color: #444;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.registration-table tr:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+/* Highlight row */
+
+.highlight-row {
+  background: linear-gradient(135deg, #fff59d, #ffe082);
+  font-weight: bold;
+}
+
+/* Note */
+
+.registration-note {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Button */
+
+.registration-actions {
+  margin-top: 20px;
+}
+
+.register-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff7b54, #ff4f81);
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(255, 79, 129, 0.3);
+  transition: 0.3s ease;
+}
+
+.register-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .registration-header h2 {
+    font-size: 2rem;
+  }
+
+  .registration-table th,
+  .registration-table td {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+}
+
+.due-dates-box {
+  margin-top: 28px;
+  margin-bottom: 24px;
+  padding: 24px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255,255,255,0.55);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.45);
+  text-align: left;
+}
+
+.due-dates-box h3 {
+  font-size: 1.5rem;
+  color: #1f3b73;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.due-dates-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.due-date-item {
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255,245,157,0.75), rgba(255,255,255,0.72));
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+
+.due-date-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.due-date-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #d94f70;
+}
+
+@media (max-width: 700px) {
+  .due-dates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .due-dates-box {
+    padding: 18px;
+  }
+
+  .due-dates-box h3 {
+    font-size: 1.25rem;
+  }
+
+  .due-date-value {
+    font-size: 1.05rem;
+  }
+}
+
+.poster-section {
+  max-width: 1100px;
+  margin: 100px auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Header */
+
+.poster-header h2 {
+  font-size: 2.6rem;
+  color: #1f3b73;
+  margin-bottom: 10px;
+}
+
+.poster-header p {
+  color: #555;
+  margin-bottom: 40px;
+  font-size: 1.05rem;
+}
+
+/* Container (VERTICAL LAYOUT) */
+
+.poster-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Poster Card */
+
+.poster-card {
+  width: 200%;
+  max-width: 1100px;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border-radius: 28px;
+  padding: 25px;
+
+  border: 1.5px solid rgba(255,255,255,0.6);
+
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+
+  transition: 0.3s ease;
+}
+
+.poster-card:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+/* Title */
+
+.poster-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #ff4f81;
+}
+
+/* PDF Container */
+
+.pdf-frame {
+  width: 100%;
+  height: 1100px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PDF iframe */
+
+.pdf-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Button */
+
+.poster-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #ff7b54, #ff4f81);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 10px 20px rgba(255, 79, 129, 0.3);
+  transition: 0.3s ease;
+}
+
+.poster-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Mobile */
+
+@media (max-width: 800px) {
+  .poster-section {
+    margin: 70px auto;
+    padding: 30px 15px;
+  }
+
+  .poster-header h2 {
+    font-size: 2rem;
+  }
+
+  .poster-header p {
+    font-size: 0.95rem;
+  }
+
+  .poster-card {
+    padding: 18px;
+  }
+
+  .pdf-frame {
+    height: 600px; /* smaller for mobile */
+  }
+}
+
+.site-footer {
+  margin-top: 80px;
+  background: linear-gradient(135deg, #1f3b73, #2d6cdf);
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.15);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle glossy top layer */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  background: linear-gradient(
+    rgba(255,255,255,0.25),
+    rgba(255,255,255,0.05)
+  );
+  pointer-events: none;
+}
+
+/* text */
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-content p {
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  opacity: 0.95;
+}
+
+/* optional: small hover glow */
+
+.site-footer:hover {
+  box-shadow: 0 -12px 35px rgba(0,0,0,0.2);
+}
+
+/* mobile */
+
+@media (max-width: 600px) {
+  .site-footer {
+    padding: 16px 8px;
+  }
+
+  .footer-content p {
+    font-size: 0.85rem;
+  }
+}
+
+.bank-details-box {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 24px;
+
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1.5px solid rgba(255,255,255,0.55);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.45);
+}
+
+.bank-details-box h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #1f3b73;
+  margin-bottom: 20px;
+}
+
+/* Grid */
+
+.bank-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+/* Each item */
+
+.bank-item {
+  padding: 16px 18px;
+  border-radius: 16px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.75),
+    rgba(255,255,255,0.5)
+  );
+
+  border: 1px solid rgba(255,255,255,0.6);
+
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+
+/* Label */
+
+.bank-item span {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Value */
+
+.bank-item strong {
+  font-size: 1.05rem;
+  color: #d94f70;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .bank-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bank-details-box {
+    padding: 18px;
+  }
+
+  .bank-details-box h3 {
+    font-size: 1.3rem;
+  }
+
+  .bank-item strong {
+    font-size: 0.95rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Kaliveed 2026</h1>
+      <h2>Summer Camp by Balayam Vihar, IIT Palakkad</h2>
+      <p>
+        A colourful world of fun, creativity, learning, and friendship for children.
+        Join us for an unforgettable summer filled with joyful experiences.
+      </p>
+      <div class="hero-buttons">
+        <a href="https://forms.gle/KJise6nnnxMVGp5j6" class="btn btn-primary">Register Now</a>
+        <a href="#schedule" class="btn btn-secondary">Explore Activities</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <div class="card">
+        <img src="banner.png" alt="Kids Summer Camp" />
+        <p>Play • Learn • Create • Grow</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="registration-section" id="registration">
+
+  <div class="registration-header">
+    <span class="reg-tag">Kaliveed 2026</span>
+    <h2>Registration Details</h2>
+    <p>
+      Join us for a joyful month of learning, creativity, and fun.
+      Choose the option that best suits your child’s needs.
+    </p>
+  </div>
+
+  <div class="registration-card">
+
+    <table class="registration-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Summer Camp Only</th>
+          <th>Summer Camp + Daycare</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="highlight-row">
+          <td>Base Registration Fee</td>
+          <td colspan="2">₹1800</td>
+        </tr>
+
+        <tr>
+          <td>Full Month (General)</td>
+          <td colspan="2">Crèche Fee + ₹1800</td>
+        </tr>
+
+        <tr>
+          <td>Faculty & Officers</td>
+          <td>₹4300</td>
+          <td>₹4800</td>
+        </tr>
+
+        <tr>
+          <td>Staff & Research Scholars</td>
+          <td>₹3300</td>
+          <td>₹3800</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="registration-note">
+      <p>
+        * All fees are for the complete duration of the summer camp.
+      </p>
+    </div>
+
+    <div class="registration-actions">
+      <a href="https://forms.gle/KJise6nnnxMVGp5j6" class="register-btn">Register Now</a>
+    </div>
+
+  </div>
+
+  <div class="due-dates-box">
+  <h3>Important Due Dates</h3>
+
+  <div class="due-dates-grid">
+    <div class="due-date-item">
+      <div class="due-date-label">Last Date to Register</div>
+      <div class="due-date-value">28th March 2026, Saturday</div>
+    </div>
+
+    <div class="due-date-item">
+      <div class="due-date-label">Last Date for Remaining Fee Payment</div>
+      <div class="due-date-value">31st March 2026, Tuesday </div>
+    </div>
+  </div>
+</div>
+
+<div class="bank-details-box">
+  <h3>Bank Details for Payment</h3>
+
+  <div class="bank-details-grid">
+    <div class="bank-item">
+      <span>Account Name</span>
+      <strong>BALYAM VIHAR</strong>
+    </div>
+
+    <div class="bank-item">
+      <span>Account Number</span>
+      <strong>6174101000820</strong>
+    </div>
+
+    <div class="bank-item">
+      <span>Bank Name</span>
+      <strong>Canara Bank</strong>
+    </div>
+
+    <div class="bank-item">
+      <span>Branch</span>
+      <strong>IIT Palakkad</strong>
+    </div>
+
+    <div class="bank-item">
+      <span>IFSC Code</span>
+      <strong>CNRB0006174</strong>
+    </div>
+
+    <div class="bank-item">
+      <span>MICR Code</span>
+      <strong>678015010</strong>
+    </div>
+  </div>
+</div>
+</section>
+
+  <section class="camp-highlights">
+  <div class="gallery-box">
+    <h3>Memories from Previous Camps</h3>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="image_1.jpg" alt="Kids enjoying craft session">
+        <div class="photo-caption">Wizards of Balyam Vihar (Magic Show)</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="image_2.jpg" alt="Children dancing on stage">
+        <div class="photo-caption">Finale</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="image_3 (2).jpeg" alt="Kids participating in games">
+        <div class="photo-caption">Happy Minds</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="image_4.jpeg" alt="Children in storytelling session">
+        <div class="photo-caption">Craft</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="description-box">
+    <h2>About Kaliveed</h2>
+    <p>
+      <strong>Kaliveed</strong> is the vibrant summer camp of <strong>Balayam Vihar, IIT Palakkad</strong>,
+      designed to give children a joyful space to learn, play, explore, and grow.
+      Through a rich mix of creative activities, games, arts, music, movement, and interaction,
+      the camp nurtures confidence, curiosity, friendship, and expression.
+    </p>
+    <p>
+      Kaliveed is not just a camp — it is a colourful experience where every child discovers
+      new talents, creates warm memories, and enjoys a summer filled with happiness and energy.
+    </p>
+  </div>
+</section>
+
+
+<section class="schedule-section" id="schedule">
+  <div class="schedule-bg-shape shape-one"></div>
+  <div class="schedule-bg-shape shape-two"></div>
+
+  <div class="schedule-header">
+    <span class="schedule-tag">Kaliveed 2026</span>
+    <h2>Event Time Table</h2>
+    <p>
+      A colourful lineup of creativity, movement, fun, and joyful learning
+      throughout April 2026.
+    </p>
+  </div>
+
+  <div class="schedule-table-wrap">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Mentor</th>
+          <th>Programme</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="date-pill">1 Apr 2026</span></td>
+          <td>Shemeera &amp; Sophia</td>
+          <td><span class="program-badge fun">Fun Games</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">2 Apr 2026</span></td>
+          <td>Madhumita</td>
+          <td><span class="program-badge craft">Recycling Craft</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">6 Apr 2026</span></td>
+          <td>Akhila</td>
+          <td><span class="program-badge dance">Dance</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">7 Apr 2026</span></td>
+          <td>Tessy</td>
+          <td><span class="program-badge story">Story Time</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">8 Apr 2026</span></td>
+          <td>Arya</td>
+          <td><span class="program-badge happy">Happy Hearts</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">9 Apr 2026</span></td>
+          <td>Josephine</td>
+          <td><span class="program-badge cooking">Cook Without Fire</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">10 Apr 2026</span></td>
+          <td>Priya</td>
+          <td><span class="program-badge yoga">Basic Yoga</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">13 Apr 2026</span></td>
+          <td>Akhila</td>
+          <td><span class="program-badge dance">Dance</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">14 Apr 2026</span></td>
+          <td>Sreeja</td>
+          <td><span class="program-badge craft">Craft</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">16 Apr 2026</span></td>
+          <td>Sreeja</td>
+          <td><span class="program-badge craft">Craft</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">17 Apr 2026</span></td>
+          <td>Sreeja</td>
+          <td><span class="program-badge craft">Craft</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">20 Apr 2026</span></td>
+          <td>Shruthi</td>
+          <td><span class="program-badge music">Music</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">21 Apr 2026</span></td>
+          <td>Shruthi</td>
+          <td><span class="program-badge music">Music</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">22 Apr 2026</span></td>
+          <td>Akhila</td>
+          <td><span class="program-badge dance">Dance</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">23 Apr 2026</span></td>
+          <td>Akhila</td>
+          <td><span class="program-badge dance">Dance</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">24 Apr 2026</span></td>
+          <td>Renchu</td>
+          <td><span class="program-badge sport">Sporty Game</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">27 Apr 2026</span></td>
+          <td>Lakshmi</td>
+          <td><span class="program-badge math">Fun with Math</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">28 Apr 2026</span></td>
+          <td>Ambika</td>
+          <td><span class="program-badge drama">Drama</span></td>
+        </tr>
+        <tr>
+          <td><span class="date-pill">29 Apr 2026</span></td>
+          <td>Saravanan</td>
+          <td><span class="program-badge magic">Magic</span></td>
+        </tr>
+        <tr class="final-day-row">
+          <td><span class="date-pill final-pill">30 Apr 2026</span></td>
+          <td>Kaliveed Team</td>
+          <td><span class="program-badge final">Final Day Celebration</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="poster-section">
+
+  <div class="poster-header">
+    <h2>Camp Posters</h2>
+    <p>Explore the official posters of Kaliveed Summer Camp 2026</p>
+  </div>
+
+  <div class="poster-container">
+
+    <div class="poster-card">
+      <h3>Main Poster</h3>
+      <div class="pdf-frame">
+        <iframe src="final_poster.png#view=Fit"></iframe>
+      </div>
+      <a href="final_poster.png" target="_blank" class="poster-btn">
+        View / Download
+      </a>
+    </div>
+
+    <div class="poster-card">
+      <h3>Programme Poster</h3>
+      <div class="pdf-frame">
+        <iframe src="details_poster.png#zoom=page-fit"></iframe>
+      </div>
+      <a href="details_poster.png" target="_blank" class="poster-btn">
+        View / Download
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>
+      © 2026 Kaliveed Summer Camp | Balayam Vihar, IIT Palakkad. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
